@@ -94,6 +94,7 @@ class _ProfilePageState extends State<ProfilePage> {
         CreditField(
           info: "10",
           title: "Credit",
+          isEdit: _edit,
         ),
         //Location (Text Field)
         ProfileInfo(

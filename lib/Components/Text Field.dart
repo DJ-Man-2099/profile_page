@@ -13,9 +13,18 @@ class _ProfileInfoState extends State<ProfileInfo> {
   final TextEditingController data = TextEditingController();
   var value;
   final IconList = {
-    "Name": Icon(Icons.person),
-    "Email": Icon(Icons.email),
-    "Location": Icon(Icons.location_history)
+    "Name": Icon(
+      Icons.person,
+      color: Colors.blue,
+    ),
+    "Email": Icon(
+      Icons.email,
+      color: Colors.blue,
+    ),
+    "Location": Icon(
+      Icons.location_history,
+      color: Colors.blue,
+    )
   };
   @override
   void initState() {
@@ -31,28 +40,33 @@ class _ProfileInfoState extends State<ProfileInfo> {
 
   @override
   Widget build(BuildContext context) {
-    var View = Container(
-        decoration: BoxDecoration(
-            border:
-                Border(bottom: BorderSide(style: BorderStyle.solid, width: 1))),
-        padding: EdgeInsets.symmetric(vertical: 10),
-        child: Row(
-          children: [
-            Container(
-              alignment: Alignment.center,
-              child: IconList[widget.title],
-              padding: EdgeInsets.symmetric(horizontal: 10),
-            ),
-            Container(
-              alignment: Alignment.center,
-              child: Text(
-                value,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              padding: EdgeInsets.symmetric(horizontal: 10),
-            ),
-          ],
-        ));
+    var View = Card(
+        child: Container(
+            decoration: BoxDecoration(
+                border: Border.fromBorderSide(
+                     BorderSide(
+              style: BorderStyle.solid,
+              width: 1,
+              color: Colors.blue,
+            ))),
+            padding: EdgeInsets.all(10),
+            child: Row(
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  child: IconList[widget.title],
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    value,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                ),
+              ],
+            )));
     var Edit = TextField(
       controller: data,
       style: TextStyle(fontWeight: FontWeight.bold),
