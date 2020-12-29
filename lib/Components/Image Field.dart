@@ -8,13 +8,31 @@ class ProfilePicture extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 200.0,
-        width: 200.0,
-        margin: EdgeInsets.all(20),
-        child: ClipOval(
-            child: Image.network(
-          this.URL,
-          fit: BoxFit.fill,
-        )));
+      height: 250,
+      width: double.infinity,
+          child: Stack(
+            alignment: Alignment.topCenter,
+            children:[ 
+              Container(
+                decoration: BoxDecoration(shape: BoxShape.rectangle,gradient:LinearGradient(
+                  begin: Alignment.bottomRight,
+                  end: Alignment.topLeft,
+                  colors: [Colors.red, Colors.blue]
+                ), 
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(200),bottomRight: Radius.circular(200))),
+                height: 200,
+                width: double.infinity,
+              ),
+              Container(
+            height: 150.0,
+            width: 150.0,
+            margin: EdgeInsets.only(left: 20, right: 20, top:100),
+            child: ClipOval(
+                child: Image.network(
+              this.URL,
+              fit: BoxFit.fill,
+            ))),]
+      ),
+    );
   }
 }

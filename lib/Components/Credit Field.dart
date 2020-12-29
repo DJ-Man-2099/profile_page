@@ -10,15 +10,16 @@ class CreditField extends StatefulWidget {
 }
 
 class _CreditFieldState extends State<CreditField> {
-  final TextEditingController info = TextEditingController();
+  var value;
 
   @override
   void initState() {
     super.initState();
-    this.info.text = this.widget.info;
+    value = widget.info;
   }
 
-  void _addCredit({context, data}) {
+  void _addCredit({context}) {
+    var data = value;
     showDialog(
         context: context,
         builder: (context) => StatefulBuilder(builder: (context, setState) {
@@ -40,7 +41,8 @@ class _CreditFieldState extends State<CreditField> {
 
               void save(data) {
                 setState(() {
-                  info.text = data.toString();
+                  value = data.toString();
+                  print(value);
                 });
                 close();
               }
@@ -67,7 +69,8 @@ class _CreditFieldState extends State<CreditField> {
                   FlatButton(onPressed: () => save(data), child: Text('Save')),
                 ],
               );
-            }));
+            })).then((_) => setState((){}));
+    return data;
   }
 
   @override
@@ -77,22 +80,38 @@ class _CreditFieldState extends State<CreditField> {
       child: Row(
         children: [
           Expanded(
-            child: TextField(
-              controller: info,
-              readOnly: true,
-              style: TextStyle(fontWeight: FontWeight.bold),
-              decoration: InputDecoration(
-                  labelText: this.widget.title,
-                  contentPadding: EdgeInsets.all(10),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Colors.blue, style: BorderStyle.solid))),
-            ),
+            child: Container(
+                decoration: BoxDecoration(
+                    border: Border(
+                        bottom:
+                            BorderSide(style: BorderStyle.solid, width: 1))),
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: Row(
+                  children: [
+                    Container(
+                      alignment: Alignment.center,
+                      child: Icon(Icons.monetization_on),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      child: Text(
+                        value,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                    ),
+                  ],
+                )),
           ),
           Container(
             margin: EdgeInsets.only(left: 15.0),
             child: RaisedButton(
-              onPressed: () => _addCredit(context: context, data: info.text),
+              onPressed: () {
+                setState(() {
+                  _addCredit(context: context);
+                });
+              },
               child: Text("Add Credit"),
             ),
           )
