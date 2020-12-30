@@ -9,12 +9,12 @@ class ProfilePicture extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
+      height: 225,
       width: double.infinity,
       child: Stack(alignment: Alignment.topCenter, children: [
         ClipPath(
           clipper: OvalBottomBorderClipper(),
-                  child: Container(
+          child: Container(
             decoration: BoxDecoration(
               shape: BoxShape.rectangle,
               gradient: LinearGradient(
@@ -22,14 +22,14 @@ class ProfilePicture extends StatelessWidget {
                   end: Alignment.topLeft,
                   colors: [Colors.red, Colors.blue]),
             ),
-            height: 200,
+            height: 150,
             width: double.infinity,
           ),
         ),
         Container(
             height: 150.0,
             width: 150.0,
-            margin: EdgeInsets.only(left: 20, right: 20, top: 100),
+            margin: EdgeInsets.only(left: 20, right: 20, top: 75),
             child: ClipOval(
                 child: Image.network(
               this.URL,
@@ -39,4 +39,3 @@ class ProfilePicture extends StatelessWidget {
     );
   }
 }
-

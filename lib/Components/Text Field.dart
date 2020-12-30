@@ -80,6 +80,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
 
     return Container(
         margin: EdgeInsets.symmetric(horizontal: 50.0, vertical: 20),
-        child: widget.edit ? Edit : View);
+        child: AnimatedContainer(child:widget.edit ? Edit : View,
+        duration: Duration(milliseconds: 250),));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:profile_page/Components/Gradient%20Button.dart';
 
 class CreditField extends StatefulWidget {
   final title, info, isEdit;
@@ -54,6 +55,7 @@ class _CreditFieldState extends State<CreditField> {
                   children: [
                     FlatButton(onPressed: subtract, child: Icon(Icons.remove)),
                     Container(
+                      padding: EdgeInsets.symmetric(horizontal: 15),
                       child: Text(data),
                     ),
                     FlatButton(onPressed: add, child: Icon(Icons.add)),
@@ -83,13 +85,14 @@ class _CreditFieldState extends State<CreditField> {
           widget.isEdit
               ? (Container(
                   margin: EdgeInsets.only(left: 15.0),
-                  child: RaisedButton(
+                  child: GradientButton(
                     onPressed: () {
                       setState(() {
                         _addCredit(context: context);
                       });
                     },
-                    child: Text("Add Credit"),
+                    text: "Add Credit",
+                    width: 110.0,
                   ),
                 ))
               : Container()
@@ -113,18 +116,20 @@ class Credit extends StatelessWidget {
       child: Card(
         child: Container(
             decoration: BoxDecoration(
-          border: Border.fromBorderSide(
-               BorderSide(
-        style: BorderStyle.solid,
-        width: 1,
-        color: Colors.blue,
-      ))),
-      padding: EdgeInsets.all(10),
+                border: Border.fromBorderSide(BorderSide(
+              style: BorderStyle.solid,
+              width: 1,
+              color: Colors.blue,
+            ))),
+            padding: EdgeInsets.all(10),
             child: Row(
               children: [
                 Container(
                   alignment: Alignment.center,
-                  child: Icon(Icons.monetization_on,color: Colors.blue,),
+                  child: Icon(
+                    Icons.monetization_on,
+                    color: Colors.blue,
+                  ),
                   padding: EdgeInsets.symmetric(horizontal: 10),
                 ),
                 Container(
